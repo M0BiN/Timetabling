@@ -1,0 +1,10 @@
+export const master = ['کرمی', 'بگ محمدی', 'ولیزاده', 'تنهایی', 'شیری', 'طاهری', 'غلامی'];
+export const course = ['معماری', 'شبکه', 'کاماپیلر', 'جاوا', 'مدارمنطقی', 'بینایی', 'الگوریتم', 'مباحث ویژه', 'پایگاه داده', 'نرم افزار', 'طراحی زبان برنامه سازی', 'رباتیک'];
+export const group = [95, 96, 97, 98];
+export const time = ['بدون ساعت پیشنهادی', '8-10', '10-12', '2-4', '4-6'];
+export const day = ['بدون روز پیشنهادی', 'SAT', 'SUN', 'MON', 'TUE', 'FRI'];
+export const rotation = ['Yes', 'No'];
+export let enrollment = [];
+export let timeEnrollment = [];
+export let dayEnrollment = [];
+export let rotationEnrollment = [];

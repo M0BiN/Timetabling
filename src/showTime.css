@@ -1,0 +1,32 @@
+.all_Container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: 'B Koodak';
+    text-align: center;
+    
+    
+}
+.show-detials {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: 'B Homa';
+}
+
+.show-detials h2{
+}
+
+.show-button{
+
+
+
+}
+
+.show-button button{
+    margin-left: 16px;
+}
