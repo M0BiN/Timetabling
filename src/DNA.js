@@ -15,7 +15,7 @@ class DNA {
         for (let i = 0; i < this.userData.enrollment.length; i++) {
             let dna = [];
             if (this.userData.dayEnrollment[i]) {
-                console.log(this.userData.dayEnrollment[i])
+                // console.log(this.userData.dayEnrollment[i])
                 dna.push(this.userData.dayEnrollment[i]);
             } else dna.push(Math.floor(Math.random() * 5) + 1); // Day from Sunday to Wensday
             if (this.userData.timeEnrollment[i]) {

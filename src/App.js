@@ -58,6 +58,20 @@ function sketch(p) {
     exit = () => {
       let b = po.getOverAll();
       store.dispatch({ type: 'SET_FINAL_ANSWER', payload: b });
+      let all = store.getState().enrollment.enrollment;
+
+
+      let groups = [];
+      for (let i = 0; i < all.length; i++) {
+        groups.push(parseInt(all[i][2]));
+      }
+
+      groups = removeDuplicates(groups);
+      groups = groups.sort();
+      // console.log(groups, ' removeDuplicaties...')
+      store.dispatch({ type: 'SET_Group', payload: groups });
+
+
       p.noLoop();
       mainHistory.push('/3')
     }
@@ -113,7 +127,7 @@ function sketch(p) {
 
       groups = removeDuplicates(groups);
       groups = groups.sort();
-      console.log(groups, ' removeDuplicaties...')
+      // console.log(groups, ' removeDuplicaties...')
       store.dispatch({ type: 'SET_Group', payload: groups });
 
 
