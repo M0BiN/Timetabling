@@ -7,7 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { withRouter } from "react-router";
 import ListGroup from 'react-bootstrap/ListGroup'
 import store from './redux/store';
-
+import Slide from 'react-reveal/Slide';
 
 // import { master, course, group, time, day, rotation} from './makeData';
 
@@ -25,7 +25,7 @@ function App({ history }) {
 
 
     const enrollTable = showEnroll.data.map((value, index) =>
-        <ListGroup.Item key={`tablenum${index}`}>{`${value}`}</ListGroup.Item>
+    <Slide bottom><ListGroup.Item key={`tablenum${index}`}>{`${value}`}</ListGroup.Item></Slide>
     )
 
 
@@ -141,9 +141,9 @@ function App({ history }) {
                     </Button>
                 </div>
             </div>
-            <button onClick={() => {
+            <Button variant="success" onClick={() => {
                 history.push('/2');
-            }}>Final</button>
+            }}>GO!!!</Button>
 
             <ListGroup>
                 {enrollTable}
