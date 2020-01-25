@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bf90b1e76ad8fc508660b55bfe51fd76",
+    "revision": "39398280ec01a66fa9d8cfdf7fe8efae",
     "url": "/Timetabling/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Timetabling/static/css/2.17e5ed98.chunk.css"
   },
   {
-    "revision": "d0f07145f8a7c1a1baf2",
+    "revision": "38da81de03223cae43f8",
     "url": "/Timetabling/static/css/main.f4f0aee1.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Timetabling/static/js/2.ebf28ed6.chunk.js.LICENSE"
   },
   {
-    "revision": "d0f07145f8a7c1a1baf2",
-    "url": "/Timetabling/static/js/main.fc473a40.chunk.js"
+    "revision": "38da81de03223cae43f8",
+    "url": "/Timetabling/static/js/main.f83e9b76.chunk.js"
   },
   {
     "revision": "a76b4a11b1b80c8ba51e",
