@@ -13,8 +13,12 @@ import store from './redux/store';
 
 
 function App({ history }) {
+
+    React.useEffect(() => {
+       store.dispatch({type:'SECTOR_CLEAR'}); 
+    },[]);
     const { enrollment, information } = store.getState();
-    const {master, course, group, time, day, rotation} = information;
+    const { master, course, group, time, day, rotation } = information;
 
     const [state, setState] = React.useState({ master: 0, course: 0, group: 0, time: 0, day: 0, rotation: 1 });
     const [showEnroll, setShowEnroll] = React.useState({ data: [] });

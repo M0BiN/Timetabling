@@ -3,14 +3,22 @@ import Table from 'react-bootstrap/Table'
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button'
 import './showTime.css';
+import {useHistory} from 'react-router-dom';
 
 
 
 const ShowTime = ({ information, enrollment, final, dis_Group }) => {
+    let history = useHistory();
     const [group, setGroup] = React.useState(0);
     enrollment = enrollment.enrollment;
     if (!final || enrollment.length === 0 || !final.genes) {
-        return <h1>Something went wrong...</h1>
+        return <><h1>Something went wrong...</h1>
+        <Button variant="primary" style={{marginTop:'38px'}}
+            onClick={()=>{
+                history.push('/1')
+
+            }}
+            >صفحه اصلی</Button></>
     }
     let table = final.genes;
     let shanbe_8_10 = "";
@@ -304,6 +312,12 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
                 
                 </div>
             </div>
+            <Button variant="primary" style={{marginTop:'38px'}}
+            onClick={()=>{
+                history.push('/1')
+
+            }}
+            >صفحه اصلی</Button>
         </div>
     )
 
