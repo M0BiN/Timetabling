@@ -14,6 +14,7 @@ function App() {
                 <Route exact path="/1" component={Getinput} />
                 <Route exact path="/2" component={Myapp} />
                 <Route exact path="/3" component={ShowTime} />
+                <Route  path="/" component={Getinput} />
 
 
             </Switch>
