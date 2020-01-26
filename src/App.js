@@ -60,17 +60,19 @@ function sketch(p) {
       store.dispatch({ type: 'SET_FINAL_ANSWER', payload: b });
       let all = store.getState().enrollment.enrollment;
 
-
+      let profs = [];
       let groups = [];
       for (let i = 0; i < all.length; i++) {
         groups.push(parseInt(all[i][2]));
+        profs.push(parseInt(all[i][0]))
       }
-
+      profs = removeDuplicates(profs);
       groups = removeDuplicates(groups);
+      profs = profs.sort();
       groups = groups.sort();
       // console.log(groups, ' removeDuplicaties...')
       store.dispatch({ type: 'SET_Group', payload: groups });
-
+      store.dispatch({ type: 'SET_Profs', payload: profs });
 
       p.noLoop();
       mainHistory.push('/3')
