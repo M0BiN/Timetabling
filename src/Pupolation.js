@@ -38,7 +38,7 @@ class Population {
       bestOverAll = this.population[i].fitness > bestOverAll.fitness ? this.population[i] : bestOverAll;
       this.avg += this.population[i].fitness;
       this.totalFitness += this.population[i].fitness;
-      if(this.bestofThebest.fitness < this.population[i].fitness){
+      if (this.bestofThebest.fitness < this.population[i].fitness) {
         this.bestofThebest = this.population[i];
       }
     }
@@ -60,25 +60,28 @@ class Population {
     const saved = this.saveMEjesus();
     // newpop.push(saved[0],saved[1],saved[2])
     // console.log('tol poll=',this.matingPool.length)
-    for (let i = 0; i < this.population.length / 2; i++) {
-      let partnerA = (Math.random(1) > 0.05 ? this.giveMeOneGoodChild() : saved[0]);
-      let partnerB = (Math.random(1) > 0.01 ? this.giveMeOneGoodChild() : saved[1]);
+    for (let i = 0; i < (this.population.length / 2)-1; i++) {
+      let partnerA = (Math.random(1) > 0.01 ? this.giveMeOneGoodChild() : saved[0]);
+      let partnerB = this.giveMeOneGoodChild()
       let child = partnerA.crossover(partnerB);
       child[0].mutate(this.mutationRate);
       child[1].mutate(this.mutationRate);
       newpop.push(child[0]);
       newpop.push(child[1]);
     }
+    newpop.push(saved[0]);
+    newpop.push(saved[1]);
     this.generations++;
+
     this.population = newpop;
   }
 
 
 
   saveMEjesus() {
-    let first = { fitness: -10000 };
-    let second = { fitness: -10000 };
-    let third = { fitness: -10000 };
+    let first = { fitness: -1 };
+    let second = { fitness: -1 };
+    let third = { fitness: -1 };
     for (let i = 0; i < this.population.length; i++) {
       const num = this.population[i].fitness;
       if (num > first.fitness) {

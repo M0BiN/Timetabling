@@ -18,6 +18,13 @@ const Enrollment = (state = Initial_State, action) => {
             timeEnrollment: [...state.timeEnrollment, action.timeEnrollment],
             rotationEnrollment: [...state.rotationEnrollment, action.rotationEnrollment],
         }
+        case 'SET_Enrollment_Temp': return {
+            
+            enrollment: action.enrollment,
+            dayEnrollment:  action.dayEnrollment,
+            timeEnrollment: action.timeEnrollment,
+            rotationEnrollment:  action.rotationEnrollment,
+        }
         case 'SECTOR_CLEAR': return Initial_State;
 
         default: return state;

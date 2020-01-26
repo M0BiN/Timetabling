@@ -86,7 +86,7 @@ function sketch(p) {
 
 
     // Create a population with a target phrase, mutation rate, and population max
-    po = new Population(200, 0.1);
+    po = new Population(400, 0.025);
   }
 
   p.draw = () => {

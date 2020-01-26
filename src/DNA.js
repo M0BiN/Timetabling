@@ -36,59 +36,52 @@ class DNA {
     calcFitness() {
         let score = 100;
         for (let i = 0; i < this.genes.length; i++) {
-            // let theProf = this.userData.enrollment[i][0];
-            // let theGroup = this.userData.enrollment[i][2];
-            // let isRotation = this.userData.rotationEnrollment[i];
-            // let theHour = this.userData.timeEnrollment[i];
-            // let theDay = this.userData.dayEnrollment[i];
-
             let theProf = this.userData.enrollment[i][0];
             let theGroup = this.userData.enrollment[i][2];
             let isRotation = this.userData.rotationEnrollment[i];
             let theHour = this.genes[i][1];
             let theDay = this.genes[i][0];
-            let number_of_rotation_in_same_time = 0;
+            let number_of_rotation_in_same_time_for_prof = 0;
+            let number_of_rotation_in_same_time_for_group = 0;
 
             for (let j = i + 1; j < this.genes.length; j++) {
                 let theProf2nd = this.userData.enrollment[j][0];
                 let theGroup2nd = this.userData.enrollment[j][2];
-                let isRotation2nd = this.userData.rotationEnrollment[i];
-
-                // let theCourse2nd = enroll_course[i];
+                let isRotation2nd = this.userData.rotationEnrollment[j];
                 let theHour2nd = this.genes[j][1];
                 let theDay2nd = this.genes[j][0];
-                // if (theProf === theProf2nd) if (theDay !== theDay2nd) score -= 1;
 
                 if (theDay === theDay2nd && theHour === theHour2nd) {
-                    // if(odd_or_even && odd_or_even2nd){
-                    //     if(odd_or_even === odd_or_even2nd){
-                    //         score -= 10;
-                    //     }
-                    //     if(prof===theProf2nd) score += 10;
-                    //     if (theGroup === theGroup2nd) score += 10;
-                    // } else score-=5;
-                    score -= 3;
+                    score -= 4;
                     if (theProf === theProf2nd) score -= 10;
                     if (theGroup === theGroup2nd) score -= 10;
-                    if (isRotation2nd && isRotation && number_of_rotation_in_same_time === 0) {
-                        if (theProf === theProf2nd) score += 10;
-                        if (theGroup === theGroup2nd) score += 10;
-                        number_of_rotation_in_same_time++;
+                    if (isRotation2nd && isRotation && number_of_rotation_in_same_time_for_prof===0) {
+                        let bounuce = false;
+                        if (theProf === theProf2nd){
+                            number_of_rotation_in_same_time_for_prof++;
+                            score += 13;
+                            bounuce= true;
+                            
+                        } 
+                        if (theGroup === theGroup2nd && number_of_rotation_in_same_time_for_group===0){
+                            score += 11;
+                            number_of_rotation_in_same_time_for_group++;
+                            if(bounuce)score+=2;
+                        } 
+                        
                     }
                 }
-                // if(theProf===theProf2nd){
-                //     if(odd_or_even && odd_or_even2nd){
-                //         if(odd_or_even!==odd_or_even2nd){
-                //             if(theHour !== theHour2nd){
 
-                //             }
-                //         }
-                //     }
+
+                // if(theProf===theProf2nd && isRotation && isRotation2nd && theDay!==theDay2nd && theHour!==theDay2nd){
+                //     score = score-3;
+
+                // }
+                // if(theProf===theProf2nd && isRotation && isRotation2nd && theDay===theDay2nd && theHour===theDay2nd){
+                //     score = score+3;
+
                 // }
 
-                // if(theGroup===theGroup2nd){
-                //     if(theDay!==theDay2nd)score-=4;
-                // }
             }
         }
         if (score < 0){
@@ -124,10 +117,11 @@ class DNA {
         let child1st = new DNA(this.userData);
         let child2nd = new DNA(this.userData);
         let midLine = Math.floor(Math.random() * this.genes.length);
-
+        let oneLine = this.genes.length/3;
+        let nextLine = this.genes.length/3+this.genes.length/3;;
         for (let i = 0; i < this.genes.length; i++) {
             // console.log(this.genes[i])
-            if (i < midLine) {
+            if (Math.floor(Math.random()*100)) {
                 child1st.genes[i][0] = this.genes[i][0];
                 child1st.genes[i][1] = this.genes[i][1];
                 child2nd.genes[i][0] = partner.genes[i][0];
@@ -139,8 +133,8 @@ class DNA {
                 child2nd.genes[i][1] = this.genes[i][1];
             }
         }
-        child1st.mutate(0.1);
-        child2nd.mutate(0.1);
+        // child1st.mutate(0.1);
+        // child2nd.mutate(0.1);
         return [child1st, child2nd];
 
 
@@ -159,8 +153,9 @@ class DNA {
                     if (!this.userData.timeEnrollment[i]) {
                         this.genes[i][1] = (Math.floor(Math.random() * 3) + 1); // Hour from 08:00 AM to 06:30 PM
                     }
-
                     break;
+
+                    
                 }
 
             }

@@ -8,7 +8,7 @@ import { withRouter } from "react-router";
 import ListGroup from 'react-bootstrap/ListGroup'
 import store from './redux/store';
 import Slide from 'react-reveal/Slide';
-
+import {tempDay,tempEnrollment,tempIsRotation,tempTime} from './temp';
 // import { master, course, group, time, day, rotation} from './makeData';
 
 
@@ -144,6 +144,16 @@ function App({ history }) {
             <Button variant="success" onClick={() => {
                 history.push('/2');
             }}>GO!!!</Button>
+
+            <Button onClick={()=>{
+                store.dispatch({
+                                type: 'SET_Enrollment_Temp',
+                                enrollment: tempEnrollment,
+                                timeEnrollment: tempTime,
+                                dayEnrollment: tempDay,
+                                rotationEnrollment: tempIsRotation
+                            })
+            }} variant="warning">Use Default Value</Button>
 
             <ListGroup>
                 {enrollTable}

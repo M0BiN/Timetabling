@@ -3,21 +3,22 @@ import Table from 'react-bootstrap/Table'
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button'
 import './showTime.css';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 
 const ShowTime = ({ information, enrollment, final, dis_Group }) => {
     let history = useHistory();
     const [group, setGroup] = React.useState(0);
+    let isRotate = enrollment.rotationEnrollment;
     enrollment = enrollment.enrollment;
     if (!final || enrollment.length === 0 || !final.genes) {
         return <><h1>Something went wrong...</h1>
-        <Button variant="primary" style={{marginTop:'38px'}}
-            onClick={()=>{
-                history.push('/1')
+            <Button variant="primary" style={{ marginTop: '38px' }}
+                onClick={() => {
+                    history.push('/1')
 
-            }}
+                }}
             >صفحه اصلی</Button></>
     }
     let table = final.genes;
@@ -54,23 +55,23 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
         if (parseInt(enrollment[i][2]) === dis_Group[group]) {
 
-
+            let star = isRotate[i] ? "*" : "";
             if (parseInt(table[i][0]) === 1) {
 
                 if (parseInt(table[i][1]) === 1) {
-                    shanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]];
+                    shanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
                 }
 
 
                 if (parseInt(table[i][1]) === 2) {
-                    shanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    shanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
                 }
 
 
                 if (parseInt(table[i][1]) === 3) {
-                    shanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    shanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -78,7 +79,7 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
 
                 if (parseInt(table[i][1]) === 4) {
-                    shanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    shanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -102,19 +103,19 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
 
                 if (parseInt(table[i][1]) === 1) {
-                    yekshanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]];
+                    yekshanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star;
                 }
 
 
                 if (parseInt(table[i][1]) === 2) {
-                    yekshanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    yekshanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
                 }
 
 
                 if (parseInt(table[i][1]) === 3) {
-                    yekshanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    yekshanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -122,7 +123,7 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
 
                 if (parseInt(table[i][1]) === 4) {
-                    yekshanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    yekshanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -149,19 +150,19 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
             if (parseInt(table[i][0]) === 3) {
                 if (parseInt(table[i][1]) === 1) {
-                    doshanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]];
+                    doshanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star;
                 }
 
 
                 if (parseInt(table[i][1]) === 2) {
-                    doshanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    doshanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
                 }
 
 
                 if (parseInt(table[i][1]) === 3) {
-                    doshanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    doshanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -169,7 +170,7 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
 
                 if (parseInt(table[i][1]) === 4) {
-                    doshanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    doshanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -181,19 +182,19 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
             if (parseInt(table[i][0]) === 4) {
                 if (parseInt(table[i][1]) === 1) {
-                    seshanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]];
+                    seshanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star;
                 }
 
 
                 if (parseInt(table[i][1]) === 2) {
-                    seshanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    seshanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
                 }
 
 
                 if (parseInt(table[i][1]) === 3) {
-                    seshanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    seshanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -201,7 +202,7 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
 
                 if (parseInt(table[i][1]) === 4) {
-                    seshanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    seshanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -214,19 +215,19 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
             if (parseInt(table[i][0]) === 5) {
                 if (parseInt(table[i][1]) === 1) {
-                    chaharshanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]];
+                    chaharshanbe_8_10 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star;
                 }
 
 
                 if (parseInt(table[i][1]) === 2) {
-                    chaharshanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    chaharshanbe_10_12 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
                 }
 
 
                 if (parseInt(table[i][1]) === 3) {
-                    chaharshanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    chaharshanbe_2_4 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -234,7 +235,7 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
 
 
                 if (parseInt(table[i][1]) === 4) {
-                    chaharshanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + '| \n';
+                    chaharshanbe_4_6 += information.master[enrollment[i][0]] + ' - ' + information.course[enrollment[i][1]] + star + '| \n';
 
 
 
@@ -306,17 +307,17 @@ const ShowTime = ({ information, enrollment, final, dis_Group }) => {
             <div className='show-detials'>
                 <h2>{`ورودی: ${information.group[dis_Group[group]]}`}</h2>
                 <div className='show-button'>
-                
-                <Button variant="dark" onClick={() => setGroup((group + 1 < dis_Group.length) ? group + 1 : group)}>ورودی بعدی</Button>
-                <Button variant="dark" onClick={() => setGroup((group - 1 >= 0) ? group - 1 : group)}>ورودی قبلی</Button>
-                
+
+                    <Button variant="dark" onClick={() => setGroup((group + 1 < dis_Group.length) ? group + 1 : group)}>ورودی بعدی</Button>
+                    <Button variant="dark" onClick={() => setGroup((group - 1 >= 0) ? group - 1 : group)}>ورودی قبلی</Button>
+
                 </div>
             </div>
-            <Button variant="primary" style={{marginTop:'38px'}}
-            onClick={()=>{
-                history.push('/1')
+            <Button variant="primary" style={{ marginTop: '38px' }}
+                onClick={() => {
+                    history.push('/1')
 
-            }}
+                }}
             >صفحه اصلی</Button>
         </div>
     )
