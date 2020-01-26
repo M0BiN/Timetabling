@@ -153,7 +153,7 @@ function App({ history }) {
                                 dayEnrollment: tempDay,
                                 rotationEnrollment: tempIsRotation
                             })
-            }} variant="warning">Use Default Value</Button>
+            }} variant="warning" style={{position:'absolute',left:'0',bottom:'50px'}}>Use Default Value</Button>
 
             <ListGroup>
                 {enrollTable}

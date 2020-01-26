@@ -34,7 +34,7 @@ class DNA {
 
     // Fitness function (returns floating point % of "correct" characters)
     calcFitness() {
-        let score = 100;
+        let score = 200;
         for (let i = 0; i < this.genes.length; i++) {
             let theProf = this.userData.enrollment[i][0];
             let theGroup = this.userData.enrollment[i][2];
@@ -43,7 +43,6 @@ class DNA {
             let theDay = this.genes[i][0];
             let number_of_rotation_in_same_time_for_prof = 0;
             let number_of_rotation_in_same_time_for_group = 0;
-
             for (let j = i + 1; j < this.genes.length; j++) {
                 let theProf2nd = this.userData.enrollment[j][0];
                 let theGroup2nd = this.userData.enrollment[j][2];
@@ -52,24 +51,28 @@ class DNA {
                 let theDay2nd = this.genes[j][0];
 
                 if (theDay === theDay2nd && theHour === theHour2nd) {
-                    score -= 4;
-                    if (theProf === theProf2nd) score -= 10;
-                    if (theGroup === theGroup2nd) score -= 10;
+                    score -= 8;
+                    if (theProf === theProf2nd) score -= 20;
+                    if (theGroup === theGroup2nd) score -= 20;
                     if (isRotation2nd && isRotation && number_of_rotation_in_same_time_for_prof===0) {
                         let bounuce = false;
                         if (theProf === theProf2nd){
                             number_of_rotation_in_same_time_for_prof++;
-                            score += 13;
+                            score += 38;
                             bounuce= true;
                             
                         } 
                         if (theGroup === theGroup2nd && number_of_rotation_in_same_time_for_group===0){
-                            score += 11;
+                            score += 22;
                             number_of_rotation_in_same_time_for_group++;
-                            if(bounuce)score+=2;
+                            if(bounuce)score+=4;
                         } 
                         
                     }
+                }
+                if ((theDay !== theDay2nd || theHour !== theHour2nd) && isRotation && isRotation2nd && theProf===theProf2nd){
+                    if(theDay !== theDay2nd)score--;
+                    if(theHour !== theHour2nd)score--;
                 }
 
 

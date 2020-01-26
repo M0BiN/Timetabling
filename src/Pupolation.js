@@ -61,7 +61,7 @@ class Population {
     // newpop.push(saved[0],saved[1],saved[2])
     // console.log('tol poll=',this.matingPool.length)
     for (let i = 0; i < (this.population.length / 2)-1; i++) {
-      let partnerA = (Math.random(1) > 0.01 ? this.giveMeOneGoodChild() : saved[0]);
+      let partnerA = this.giveMeOneGoodChild() ;
       let partnerB = this.giveMeOneGoodChild()
       let child = partnerA.crossover(partnerB);
       child[0].mutate(this.mutationRate);
@@ -129,20 +129,21 @@ class Population {
 
   // Compute the current "most fit" member of the population
   evaluate() {
-    let worldrecord = 0.0;
-    let index = 0;
-    for (let i = 0; i < this.population.length; i++) {
-      if (this.population[i].fitness > worldrecord) {
-        index = i;
-        worldrecord = this.population[i].fitness;
-        this.bestofThebest = this.population[index].fitness > this.bestofThebest.fitness ? this.population[index] : this.bestofThebest;
-      }
+    return false;
+    // let worldrecord = 0.0;
+    // let index = 0;
+    // for (let i = 0; i < this.population.length; i++) {
+    //   if (this.population[i].fitness > worldrecord) {
+    //     index = i;
+    //     worldrecord = this.population[i].fitness;
+    //     this.bestofThebest = this.population[index].fitness > this.bestofThebest.fitness ? this.population[index] : this.bestofThebest;
+    //   }
 
-    }
+    // }
 
-    if (worldrecord >= 99) {
-      this.finished = true;
-    }
+    // if (worldrecord >= 99) {
+    //   this.finished = true;
+    // }
     // this.bestofThebest = this.population[index].fitness>this.bestofThebest.fitness?this.population[index] : this.bestofThebest;
     // if(worldrecord > bestOverAll.fitness){
     //   console.log(worldrecord, ' >',bestOverAll.fitness, ' ?' )
